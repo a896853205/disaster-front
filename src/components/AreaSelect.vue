@@ -123,6 +123,49 @@
                @click.native="startLoad">
       开始整理装载
     </el-button>
+    <h1>装载具体表</h1>
+    <el-table
+      :data="upLoadArr"
+      tooltip-effect="dark"
+      style="width: 100%"
+    >
+      <el-table-column
+        prop="vehicle_id"
+        label="交通类型id">
+      </el-table-column>
+      <el-table-column
+        prop="vehicle_name"
+        label="交通类型">
+      </el-table-column>
+      <el-table-column
+        prop="area_id"
+        label="灾区id">
+      </el-table-column>
+      <el-table-column
+        prop="area_name"
+        label="灾区名">
+      </el-table-column>
+      <el-table-column
+        prop="rescue_id"
+        label="物资点id">
+      </el-table-column>
+      <el-table-column
+        prop="good_id"
+        label="货物id">
+      </el-table-column>
+      <el-table-column
+        prop="good_name"
+        label="货物名称">
+      </el-table-column>
+      <el-table-column
+        prop="amount"
+        label="数量">
+      </el-table-column>
+      <el-table-column
+        prop="level"
+        label="优先级">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -143,8 +186,10 @@ export default {
       needResult: [],
       // 地区需求物资数据结束
       // 地区需求物资点物资数据开始
-      areaNeedResult: []
+      areaNeedResult: [],
+      unPut: [],
       // 地区需求物资点物资数据结束
+      upLoadArr: []
     }
   },
   components: {},
@@ -207,13 +252,20 @@ export default {
       this.needResult)
       .then(res => {
         this.areaNeedResult = res.data.areaNeedResult
-        res.data.unPut
+        this.unPut = res.data.unPut
       })
     },
     /**
      * 开始装载
      */
-    startLoad () {},
+    startLoad () {
+      this.$http.post('/computed/computedUpLoad',
+      this.areaNeedResult)
+      .then(res => {
+        console.log(res.data.upLoadArr)
+        this.upLoadArr = res.data.upLoadArr
+      })
+    },
     /**
      * 表格选中改变函数
      */
