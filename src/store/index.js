@@ -1,6 +1,7 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-
+// 用户模块
+import User from './modules/user'
 // 等待模块
 import Loading from './modules/loading'
 // 提示模块
@@ -12,7 +13,8 @@ Vue.use(Vuex)
 let store = new Vuex.Store({
   modules: {
     Loading,
-    Notification
+    Notification,
+    User
   }
 })
 
