@@ -4,16 +4,21 @@
 <template>
   <div>
     HomeGoods.vue
+    <HomeGoodsAdd></HomeGoodsAdd>
   </div>
 </template>
 
 <script>
+// 增加物资情况组件
+import HomeGoodsAdd from '@/components/homeChild/goods/HomeGoodsAdd.vue'
 export default {
   data () {
     return {
     }
   },
-  components: {},
+  components: {
+    HomeGoodsAdd
+  },
   computed: {},
   methods: {}
 }

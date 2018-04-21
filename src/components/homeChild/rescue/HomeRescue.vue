@@ -4,16 +4,21 @@
 <template>
   <div>
     HomeRescue.vue
+    <HomeRescueAdd></HomeRescueAdd>
   </div>
 </template>
 
 <script>
+// 物资点情况增加组件
+import HomeRescueAdd from '@/components/homeChild/rescue/HomeRescueAdd.vue'
 export default {
   data () {
     return {
     }
   },
-  components: {},
+  components: {
+    HomeRescueAdd
+  },
   computed: {},
   methods: {}
 }
