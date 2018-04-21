@@ -4,16 +4,20 @@
 <template>
   <div>
     HomeEarthQuake.vue
+    <AreaSelect></AreaSelect>
   </div>
 </template>
 
 <script>
+import AreaSelect from '@/components/homeChild/earthquake/AreaSelect'
 export default {
   data () {
     return {
     }
   },
-  components: {},
+  components: {
+    AreaSelect
+  },
   computed: {},
   methods: {}
 }

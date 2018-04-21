@@ -201,7 +201,7 @@ export default {
     startEarthquake () {
       // 将这个数组与后台数组进行处理
       // this.multipleSelection
-      this.$http.post('/computed/computedNeed',
+      this.$http.post('/home/computedNeed',
       this.multipleSelection)
       .then(res => {
         let needArr = []
@@ -248,7 +248,7 @@ export default {
      * 开始分配物资
      */
     startDistribute () {
-      this.$http.post('/computed/computedAreaNeed',
+      this.$http.post('/home/computedAreaNeed',
       this.needResult)
       .then(res => {
         this.areaNeedResult = res.data.areaNeedResult
@@ -259,7 +259,7 @@ export default {
      * 开始装载
      */
     startLoad () {
-      this.$http.post('/computed/computedUpLoad',
+      this.$http.post('/home/computedUpLoad',
       this.areaNeedResult)
       .then(res => {
         console.log(res.data.upLoadArr)
@@ -276,12 +276,12 @@ export default {
   },
   beforeMount () {
     // 这里查询所有地区的情况
-    this.$http.get('/area/getAllArea')
+    this.$http.get('/home/getAllArea')
     .then(res => {
       this.allArea = res.data.allArea
     })
     // 查询所有烈度选项
-    this.$http.get('/strength/getAllStrength')
+    this.$http.get('/home/getAllStrength')
     .then(res => {
       this.lieOptions = res.data.allStrength
     })
