@@ -31,21 +31,37 @@
             prop="population"
             label="人口数量">
           </el-table-column>
+          <el-table-column
+            label="操作">
+            <template slot-scope="scope">
+              <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)">编辑</el-button><el-button
+                size="mini"
+                type="danger"
+                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            </template>
+          </el-table-column>
         </el-table>
       </FlowItem>
     </FlowColumn>
     <FlowColumn col="4">
       <FlowItem>
-        <HomeAreaAdd></HomeAreaAdd>
+        <HomeAreaAdd @add-success="showAllArea"></HomeAreaAdd>
       </FlowItem>
       <FlowItem>
         这里放增加要求
       </FlowItem>
     </FlowColumn>
+    <HomeAreaUpdate @close-dialog="closeDialog"
+                    :updateArea = updateArea
+                    :isUpdate = isUpdate></HomeAreaUpdate>
   </FlowContainer>
 </template>
 
 <script>
+// 修改模态框
+import HomeAreaUpdate from '@/components/homeChild/area/HomeAreaUpdate.vue'
 // flow布局大框架
 import FlowContainer from '@/components/layOut/flow/FlowContainer'
 // flow布局每条列
@@ -57,22 +73,60 @@ import HomeAreaAdd from '@/components/homeChild/area/HomeAreaAdd.vue'
 export default {
   data () {
     return {
-      area: []
+      area: [],
+      updateArea: {},
+      isUpdate: false
     }
   },
   components: {
     HomeAreaAdd,
     FlowContainer,
     FlowColumn,
-    FlowItem
+    FlowItem,
+    HomeAreaUpdate
   },
   computed: {},
-  methods: {},
+  methods: {
+    /**
+     * 打开编辑模态框
+     */
+    handleEdit (index, row) {
+      this.updateArea = this.area[index]
+      this.isUpdate = true
+    },
+    /**
+     * 删除事件
+     */
+    handleDelete (index, row) {
+      this.$http.post('/home/deleteArea', {id: this.area[index].id})
+      .then(res => {
+        this.$notify({
+          title: '删除地区',
+          message: '成功',
+          duration: 1000
+        })
+        this.showAllArea()
+      })
+    },
+    /**
+     * 关闭模态框
+     */
+    closeDialog () {
+      this.showAllArea()
+      this.isUpdate = false
+    },
+    /**
+     * 查询全部地区
+     */
+    showAllArea () {
+      this.$http.get('/home/getAllArea')
+      .then(res => {
+        this.area = res.data.allArea
+      })
+    }
+  },
   beforeMount () {
-    this.$http.get('/home/getAllArea')
-    .then(res => {
-      this.area = res.data.allArea
-    })
+    this.showAllArea()
   }
 }
 </script>

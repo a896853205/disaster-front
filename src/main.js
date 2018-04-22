@@ -12,7 +12,8 @@ import {
   TableColumn,
   Select,
   Option,
-  Input
+  Input,
+  Dialog
 } from 'element-ui'
 
 Vue.config.productionTip = false
@@ -26,6 +27,7 @@ Vue.use(TableColumn)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Input)
+Vue.use(Dialog)
 Vue.component(Button.name, Button)
 Vue.component(Notification.name, Notification)
 Vue.prototype.$notify = Notification

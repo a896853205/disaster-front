@@ -27,21 +27,38 @@
             label="是否可用"
             :formatter="isOpen">
           </el-table-column>
+          <el-table-column
+            label="操作">
+            <template slot-scope="scope">
+              <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                <el-button
+                size="mini"
+                type="danger"
+                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            </template>
+          </el-table-column>
         </el-table>
       </FlowItem>
     </FlowColumn>
     <FlowColumn col="4">
       <FlowItem>
-        <HomeRescueAdd></HomeRescueAdd>
+        <HomeRescueAdd @add-success="showAllRescue"></HomeRescueAdd>
       </FlowItem>
       <FlowItem>
         增加描述
       </FlowItem>
-    </FlowColumn>    
+    </FlowColumn>
+    <HomeRescueUpdate @close-dialog="closeDialog"
+                     :updateRescue = updateRescue
+                     :isUpdate = isUpdate></HomeRescueUpdate>
   </FlowContainer>
 </template>
 
 <script>
+// 营救点修改情况组件
+import HomeRescueUpdate from '@/components/homeChild/rescue/HomeRescueUpdate.vue'
 // flow布局大框架
 import FlowContainer from '@/components/layOut/flow/FlowContainer'
 // flow布局每条列
@@ -53,30 +70,67 @@ import HomeRescueAdd from '@/components/homeChild/rescue/HomeRescueAdd.vue'
 export default {
   data () {
     return {
-      rescue: []
+      rescue: [],
+      updateRescue: {},
+      isUpdate: false
     }
   },
   components: {
     HomeRescueAdd,
     FlowContainer,
     FlowColumn,
-    FlowItem
+    FlowItem,
+    HomeRescueUpdate
   },
   computed: {},
   methods: {
+    /**
+     * 营救点是否可用回调显示函数
+     */
     isOpen (row, column, cellValue) {
       if (cellValue === '1') {
         return '可使用'
       } else {
         return '不可使用'
       }
+    },
+    /**
+     * 打开编辑模态框
+     */
+    handleEdit (index, row) {
+      this.updateRescue = this.rescue[index]
+      this.isUpdate = true
+    },
+    /**
+     * 关闭模态框
+     */
+    closeDialog () {
+      this.showAllRescue()
+      this.isUpdate = false
+    },
+    /**
+     * 查询全部营救点
+     */
+    showAllRescue () {
+      this.$http.get('/home/getAllRescue')
+      .then(res => {
+        this.rescue = res.data.allRescue
+      })
+    },
+    handleDelete (index, row) {
+      this.$http.post('/home/deleteRescue', {id: this.rescue[index].id})
+      .then(res => {
+        this.$notify({
+          title: '删除营救点',
+          message: '成功',
+          duration: 1000
+        })
+        this.showAllRescue()
+      })
     }
   },
   beforeMount () {
-    this.$http.get('/home/getAllRescue')
-    .then(res => {
-      this.rescue = res.data.allRescue
-    })
+    this.showAllRescue()
   }
 }
 </script>

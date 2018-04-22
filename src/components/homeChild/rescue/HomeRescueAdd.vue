@@ -35,6 +35,7 @@ export default {
           message: '成功',
           duration: 1000
         })
+        this.$emit('add-success')
       })
     }
   }
