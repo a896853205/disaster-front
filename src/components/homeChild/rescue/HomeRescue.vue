@@ -3,6 +3,14 @@
 '@/components/homeChild/rescue/HomeRescue.vue' -->
 <template>
   <FlowContainer>
+    <FlowColumn col="4">
+      <FlowItem>
+        <HomeRescueAdd @add-success="showAllRescue"></HomeRescueAdd>
+      </FlowItem>
+      <FlowItem>
+        增加描述
+      </FlowItem>
+    </FlowColumn>
     <FlowColumn col="8">
       <FlowItem>
         <el-table
@@ -40,14 +48,6 @@
             </template>
           </el-table-column>
         </el-table>
-      </FlowItem>
-    </FlowColumn>
-    <FlowColumn col="4">
-      <FlowItem>
-        <HomeRescueAdd @add-success="showAllRescue"></HomeRescueAdd>
-      </FlowItem>
-      <FlowItem>
-        增加描述
       </FlowItem>
     </FlowColumn>
     <HomeRescueUpdate @close-dialog="closeDialog"

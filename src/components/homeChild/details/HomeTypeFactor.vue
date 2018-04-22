@@ -3,9 +3,23 @@
 '@/components/homeChild/details/HomeTypeFactor.vue'
 -->
 <template>
-  <div>
-    HomeTypeFactor.vue
-  </div>
+  <el-table
+    :data="typeFactor"
+    border
+    style="width: 100%">
+    <el-table-column
+      prop="name"
+      label="类型名">
+    </el-table-column>
+    <el-table-column
+      prop="area_id"
+      label="地区适用">
+    </el-table-column>
+    <el-table-column
+      prop="coeffcient"
+      label="系数">
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>

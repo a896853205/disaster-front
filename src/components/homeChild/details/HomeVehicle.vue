@@ -3,9 +3,19 @@
 '@/components/homeChild/details/HomeVehicle.vue'
  -->
 <template>
-  <div>
-    HomeVehicle.vue
-  </div>
+  <el-table
+    :data="vehicle"
+    border
+    style="width: 100%">
+    <el-table-column
+      prop="name"
+      label="交通类型名">
+    </el-table-column>
+    <el-table-column
+      prop="load"
+      label="装载量">
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>

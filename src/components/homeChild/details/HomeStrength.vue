@@ -3,9 +3,19 @@
 '@/components/homeChild/details/HomeStrength.vue'
 -->
 <template>
-  <div>
-    HomeStrength.vue
-  </div>
+  <el-table
+    :data="strength"
+    border
+    style="width: 100%">
+    <el-table-column
+      prop="level"
+      label="等级">
+    </el-table-column>
+    <el-table-column
+      prop="coeffcient"
+      label="系数">
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>

@@ -2,15 +2,32 @@
 其他详细细节总览
 '@/components/homeChild/details/HomeDetails.vue' -->
 <template>
-  <div>
-    HomeDetails.vue
-    <HomeVehicle></HomeVehicle>
-    <HomeTypeFactor></HomeTypeFactor>
-    <HomeStrength></HomeStrength>
-  </div>
+  <FlowContainer>
+    <FlowColumn col="4">
+      <FlowItem>
+        <HomeVehicle></HomeVehicle>
+      </FlowItem>
+    </FlowColumn>
+    <FlowColumn col="4">
+      <FlowItem>
+        <HomeTypeFactor></HomeTypeFactor>
+      </FlowItem>
+    </FlowColumn>
+    <FlowColumn col="4">
+      <FlowItem>
+        <HomeStrength></HomeStrength>
+      </FlowItem>
+    </FlowColumn>
+  </FlowContainer>
 </template>
 
 <script>
+// flow布局大框架
+import FlowContainer from '@/components/layOut/flow/FlowContainer'
+// flow布局每条列
+import FlowColumn from '@/components/layOut/flow/FlowColumn'
+// flow布局每条列
+import FlowItem from '@/components/layOut/flow/FlowItem'
 // 车辆细节查看组件
 import HomeVehicle from '@/components/homeChild/details/HomeVehicle.vue'
 // 系数细节查看组件
@@ -25,7 +42,10 @@ export default {
   components: {
     HomeVehicle,
     HomeTypeFactor,
-    HomeStrength
+    HomeStrength,
+    FlowContainer,
+    FlowColumn,
+    FlowItem
   },
   computed: {},
   methods: {}

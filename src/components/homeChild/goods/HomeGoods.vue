@@ -31,21 +31,37 @@
             prop="weight"
             label="重量">
           </el-table-column>
+          <el-table-column
+            label="操作">
+            <template slot-scope="scope">
+              <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)">编辑</el-button><el-button
+                size="mini"
+                type="danger"
+                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            </template>
+          </el-table-column>
         </el-table>
       </FlowItem>
     </FlowColumn>
     <FlowColumn col="4">
       <FlowItem>
-        <HomeGoodsAdd></HomeGoodsAdd>
+        <HomeGoodsAdd @add-success="showAllGoods"></HomeGoodsAdd>
       </FlowItem>
       <FlowItem>
         增加描述
       </FlowItem>
     </FlowColumn>
+    <HomeGoodsUpdate @close-dialog="closeDialog"
+                    :updateGoods = updateGoods
+                    :isUpdate = isUpdate></HomeGoodsUpdate>
   </FlowContainer>
 </template>
 
 <script>
+// 货物修改组件
+import HomeGoodsUpdate from '@/components/homeChild/goods/HomeGoodsUpdate.vue'
 // flow布局大框架
 import FlowContainer from '@/components/layOut/flow/FlowContainer'
 // flow布局每条列
@@ -57,17 +73,23 @@ import HomeGoodsAdd from '@/components/homeChild/goods/HomeGoodsAdd.vue'
 export default {
   data () {
     return {
-      goods: []
+      goods: [],
+      updateGoods: {},
+      isUpdate: false
     }
   },
   components: {
     HomeGoodsAdd,
     FlowContainer,
     FlowColumn,
-    FlowItem
+    FlowItem,
+    HomeGoodsUpdate
   },
   computed: {},
   methods: {
+    /**
+     * 类型名回调显示函数
+     */
     getTypeName (row, col, cellValue) {
       if (cellValue === '1') {
         return '生命类一次'
@@ -78,13 +100,44 @@ export default {
       } else if (cellValue === '4') {
         return '生活类循环'
       }
+    },
+    /**
+     * 打开编辑模态框
+     */
+    handleEdit (index, row) {
+      this.updateGoods = this.goods[index]
+      this.isUpdate = true
+    },
+    /**
+     * 关闭模态框
+     */
+    closeDialog () {
+      this.showAllGoods()
+      this.isUpdate = false
+    },
+    /**
+     * 删除事件
+     */
+    handleDelete (index, row) {
+      this.$http.post('/home/deleteGoods', {id: this.goods[index].id})
+      .then(res => {
+        this.$notify({
+          title: '删除货物',
+          message: '成功',
+          duration: 1000
+        })
+        this.showAllGoods()
+      })
+    },
+    showAllGoods () {
+      this.$http.get('/home/getAllGoods')
+      .then(res => {
+        this.goods = res.data.allGoods
+      })
     }
   },
   beforeMount () {
-    this.$http.get('/home/getAllGoods')
-    .then(res => {
-      this.goods = res.data.allGoods
-    })
+    this.showAllGoods()
   }
 }
 </script>
