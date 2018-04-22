@@ -36,12 +36,22 @@
             :formatter="isOpen">
           </el-table-column>
           <el-table-column
+            label="查看当前货物">
+            <template slot-scope="scope">
+               <el-button
+                size="mini"
+                @click="handleShowGoods(scope.$index, scope.row)"
+                width="100">
+                  查看
+                </el-button>
+            </template>
+          </el-table-column>
+          <el-table-column
             label="操作">
             <template slot-scope="scope">
               <el-button
                 size="mini"
-                @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                <el-button
+                @click="handleEdit(scope.$index, scope.row)">编辑</el-button><el-button
                 size="mini"
                 type="danger"
                 @click="handleDelete(scope.$index, scope.row)">删除</el-button>
@@ -93,6 +103,9 @@ export default {
       } else {
         return '不可使用'
       }
+    },
+    handleShowGoods (index, row) {
+      location.href = '/#/home/rescueGoods/' + this.rescue[index].id
     },
     /**
      * 打开编辑模态框

@@ -18,7 +18,7 @@ import HomeGoods from '@/components/homeChild/goods/HomeGoods.vue'
 // 物资点情况组件
 import HomeRescue from '@/components/homeChild/rescue/HomeRescue.vue'
 // 物资点物资情况组件
-import HomeRescueGoods from '@/components/homeChild/rescueGoods/HomeRescueGoods.vue'
+import HomeRescueGoods from '@/components/homeChild/rescue/rescueGoods/HomeRescueGoods.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -60,7 +60,7 @@ export default new Router({
         name: 'HomeRescue',
         component: HomeRescue
       }, {
-        path: '/home/rescueGoods',
+        path: '/home/rescueGoods/:id',
         name: 'HomeRescueGoods',
         component: HomeRescueGoods
       }]

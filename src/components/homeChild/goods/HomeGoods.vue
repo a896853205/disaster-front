@@ -19,9 +19,8 @@
             label="尺寸">
           </el-table-column>
           <el-table-column
-            prop="type_id"
-            label="类型"
-            :formatter="getTypeName">
+            prop="typeName"
+            label="类型">
           </el-table-column>
           <el-table-column
             prop="unit"
@@ -87,20 +86,6 @@ export default {
   },
   computed: {},
   methods: {
-    /**
-     * 类型名回调显示函数
-     */
-    getTypeName (row, col, cellValue) {
-      if (cellValue === '1') {
-        return '生命类一次'
-      } else if (cellValue === '2') {
-        return '生命类循环'
-      } else if (cellValue === '3') {
-        return '生活类一次'
-      } else if (cellValue === '4') {
-        return '生活类循环'
-      }
-    },
     /**
      * 打开编辑模态框
      */
