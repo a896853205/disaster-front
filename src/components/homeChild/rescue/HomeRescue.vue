@@ -105,7 +105,7 @@ export default {
       }
     },
     handleShowGoods (index, row) {
-      location.href = '/#/home/rescueGoods/' + this.rescue[index].id
+      location.href = '/#/home/rescueDetails/' + this.rescue[index].id
     },
     /**
      * 打开编辑模态框

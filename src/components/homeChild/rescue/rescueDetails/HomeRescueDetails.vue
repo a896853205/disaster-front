@@ -1,6 +1,6 @@
 <!-- HomeRescueGoods.vue
 物资点物资情况组件
-'@/components/homeChild/rescue/rescueGoods/HomeRescueGoods.vue' -->
+'@/components/homeChild/rescue/rescueDetails/HomeRescueDetails.vue' -->
 <template>
   <FlowContainer>
     <FlowColumn col='6'>
@@ -43,10 +43,10 @@
             <template slot-scope="scope">
               <el-button
                 size="mini"
-                @click="handleEdit(scope.$index, scope.row)">编辑</el-button><el-button
+                @click="handleGoodsEdit(scope.$index, scope.row)">编辑</el-button><el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                @click="handleGoodsDelete(scope.$index, scope.row)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -108,13 +108,13 @@
 
 <script>
 // 物资点车辆修改组件
-import HomeRescueVehicleUpdate from '@/components/homeChild/rescue/rescueGoods/rescueVehicle/HomeRescueVehicleUpdate.vue'
+import HomeRescueVehicleUpdate from '@/components/homeChild/rescue/rescueDetails/rescueVehicle/HomeRescueVehicleUpdate.vue'
 // 物资点物资修改组件
-import HomeRescueGoodsUpdate from '@/components/homeChild/rescue/rescueGoods/HomeRescueGoodsUpdate.vue'
+import HomeRescueGoodsUpdate from '@/components/homeChild/rescue/rescueDetails/rescueGoods/HomeRescueGoodsUpdate.vue'
 // 物资点物资增加组件
-import HomeRescueGoodsAdd from '@/components/homeChild/rescue/rescueGoods/HomeRescueGoodsAdd.vue'
+import HomeRescueGoodsAdd from '@/components/homeChild/rescue/rescueDetails/rescueGoods/HomeRescueGoodsAdd.vue'
 // 物资点车辆增加组件
-import HomeRescueVehicleAdd from '@/components/homeChild/rescue/rescueGoods/rescueVehicle/HomeRescueVehicleAdd.vue'
+import HomeRescueVehicleAdd from '@/components/homeChild/rescue/rescueDetails/rescueVehicle/HomeRescueVehicleAdd.vue'
 // flow布局大框架
 import FlowContainer from '@/components/layOut/flow/FlowContainer'
 // flow布局每条列
@@ -202,7 +202,7 @@ export default {
     /**
      * 删除营救点物资信息
      */
-    handleDelete (index, row) {
+    handleGoodsDelete (index, row) {
       this.$http.post('/home/deleteRescueGoods', {id: this.rescueGoods[index].id})
       .then(res => {
         this.$notify({
@@ -227,7 +227,7 @@ export default {
     /**
      * 修改营救点物资信息
      */
-    handleEdit (index, row) {
+    handleGoodsEdit (index, row) {
       this.updateRescueGoods = this.rescueGoods[index]
       this.isUpdate = true
     },

@@ -1,6 +1,6 @@
 <!-- HomeRescueGoodsAdd.vue
 物资点物资增加组件
-'@/components/homeChild/rescue/rescueGoods/HomeRescueGoodsAdd.vue' -->
+'@/components/homeChild/rescue/rescueDetails/rescueGoods/HomeRescueGoodsAdd.vue' -->
 <template>
   <div>
     <el-select v-model="addRescueGoods.id" placeholder="请选择">

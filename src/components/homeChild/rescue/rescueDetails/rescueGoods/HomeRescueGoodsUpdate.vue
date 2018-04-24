@@ -1,6 +1,6 @@
 <!-- HomeRescueGoodsUpdate.vue
 物资点物资修改组件
-'@/components/homeChild/rescue/rescueGoods/HomeRescueGoodsUpdate.vue' -->
+'@/components/homeChild/rescue/rescueDetails/rescueGoods/HomeRescueGoodsUpdate.vue' -->
 <template>
   <el-dialog title="修改营救点物资" :visible.sync="isUpdate" :show-close="false">
     <input type="text" v-model="updateRescueGoods.id" class="hidden">
