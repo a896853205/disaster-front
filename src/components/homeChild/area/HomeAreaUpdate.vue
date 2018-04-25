@@ -8,8 +8,8 @@
     <input type="text" placeholder="地区名" v-model="updateArea.name">
     <input type="text" placeholder="人口总数" v-model="updateArea.population">
     <input type="text" placeholder="人口密度" v-model="updateArea.density">
-    <input type="text" placeholder="经度" v-model="updateArea.longitude">
-    <input type="text" placeholder="纬度" v-model="updateArea.latitude">
+    <input type="text" placeholder="经度" v-model="updateArea.latitude">
+    <input type="text" placeholder="纬度" v-model="updateArea.longitude">
     <div slot="footer" class="dialog-footer">
       <el-button @click="closeDialog">取 消</el-button>
       <el-button type="primary" @click="save">确 定</el-button>

@@ -2,9 +2,8 @@
 物资点情况增加组件
 '@/components/homeChild/rescue/HomeRescueAdd.vue' -->
 <template>
-  <div>
-    HomeRescueAdd.vue
-    <input v-model="rescue.name" placeholder="营救点名" type="text">
+  <div class="add-container">
+    <input v-model="rescue.name" placeholder="物资点名" type="text">
     <input v-model="rescue.longitude" placeholder="经度" type="text">
     <input v-model="rescue.latitude" placeholder="纬度" type="text">
     <input v-model="rescue.open" placeholder="是否可用" type="text">

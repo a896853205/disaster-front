@@ -8,7 +8,7 @@
       <FlowItem>
         <el-table
           :data="area"
-          height="680"
+          height="340"
           border
           style="width: 100%">
           <el-table-column
@@ -44,13 +44,37 @@
           </el-table-column>
         </el-table>
       </FlowItem>
+      <FlowItem>
+        <HomeAreaBarChart :areaData="area"></HomeAreaBarChart>
+      </FlowItem>
     </FlowColumn>
     <FlowColumn col="4">
       <FlowItem>
         <HomeAreaAdd @add-success="showAllArea"></HomeAreaAdd>
       </FlowItem>
       <FlowItem>
-        这里放增加要求
+        <ul class="describe-ul">
+          <li>
+            <strong>[地点名]</strong>
+            <span>预演灾区的地点名</span>
+          </li>
+          <li>
+            <strong>[人口数]</strong>
+            <span>地点大概的人口数量</span>
+          </li>
+          <li>
+            <strong>[人口密度]</strong>
+            <span>地点人口密度数</span>
+          </li>
+          <li>
+            <strong>[经度]</strong>
+            <span>预演灾区的所在经度</span>
+          </li>
+          <li>
+            <strong>[纬度]</strong>
+            <span>预演灾区的所在纬度</span>
+          </li>
+        </ul>
       </FlowItem>
     </FlowColumn>
     <HomeAreaUpdate @close-dialog="closeDialog"
@@ -70,6 +94,8 @@ import FlowColumn from '@/components/layOut/flow/FlowColumn'
 import FlowItem from '@/components/layOut/flow/FlowItem'
 // 地区增加组件
 import HomeAreaAdd from '@/components/homeChild/area/HomeAreaAdd.vue'
+// 地区人口数和人口密度的图表条形图
+import HomeAreaBarChart from '@/components/homeChild/area/HomeAreaBarChart.vue'
 export default {
   data () {
     return {
@@ -83,7 +109,8 @@ export default {
     FlowContainer,
     FlowColumn,
     FlowItem,
-    HomeAreaUpdate
+    HomeAreaUpdate,
+    HomeAreaBarChart
   },
   computed: {},
   methods: {

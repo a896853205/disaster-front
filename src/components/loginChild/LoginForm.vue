@@ -2,29 +2,12 @@
 <template>
   <div id="loginform">
     <div class="form-title">密码登录</div>
-    <small class="form-describe">淘宝及1688会员可直接使用会员名登录</small>
-    <InputPack @getValue="getUser" type="text" placeholder="邮箱/会员名/8位ID" class="mar-bom-small"></InputPack>
-    <InputPack @getValue="getPassWord" type="password" placeholder="登录密码" class="mar-bom-small"></InputPack>
-    <ButtonPack @click.native="login">登录</ButtonPack>
+    <small class="form-describe">欢迎使用地震灾害预演系统</small>
+    <InputPack @getValue="getUser" type="text" placeholder="邮箱/会员名/8位ID" class="mar-bom-small login-input"></InputPack>
+    <InputPack @getValue="getPassWord" type="password" placeholder="登录密码" class="mar-bom-small login-input"></InputPack>
+    <ButtonPack @click.native="login">点击登录</ButtonPack>
     <div class="login-other">
       <UlPack :listClass="otherOpation.style" :linkList="otherOpation.data"></UlPack>
-    </div>
-    <div class="login-link">
-      <span>其他方式登录:</span>
-      <ul>
-        <li>
-          <i class="iconfont icon-wechat"></i>
-        </li>
-        <li>
-          <i class="iconfont icon-weibo"></i>
-        </li>
-        <li>
-          <i class="iconfont icon-qq"></i>
-        </li>
-        <li>
-          <i class="iconfont icon-github"></i>
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -98,15 +81,15 @@ export default {
   width: 380px;
   margin-top: 20px;
   padding: 22px;
-  background: #fff;
-  color: #73777A;
+  background: rgb(206, 197, 190);
+  color: rgb(108, 92, 79);
   box-sizing: border-box;
 }
 /* 登录框标题开始 */
 .form-title {
   margin-bottom: 18px;
   font-size: 18px;
-  color: #373D41;
+  color: rgb(27, 20 , 14);
 }
 /* 登录框标题结束 */
 /* 登录描述开始 */
@@ -116,6 +99,12 @@ export default {
   display: block;
 }
 /* 登录描述结束 */
+/* 输入框样式开始 */
+.login-input {
+  background: rgb(206, 197, 190);
+  border: 1px solid rgb(27, 20 , 14);
+}
+/* 输入框样式结束 */
 /* 登录方式样式开始 */
 .login-link {
   font-size: 12px;

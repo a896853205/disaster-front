@@ -12,7 +12,7 @@
           style="width: 100%">
           <el-table-column
             prop="name"
-            label="地点名">
+            label="物资名">
           </el-table-column>
           <el-table-column
             prop="size"
@@ -49,7 +49,31 @@
         <HomeGoodsAdd @add-success="showAllGoods"></HomeGoodsAdd>
       </FlowItem>
       <FlowItem>
-        增加描述
+        <ul class="describe-ul">
+          <li>
+            <strong>[物资名]</strong>
+            <span>物资的名称</span>
+          </li>
+          <li>
+            <strong>[物资类型]</strong>
+            <span>物资所属的类型(4种其一)</span>
+          </li>
+          <li>
+            <strong>[规格]</strong>
+            <span>物资的正常规格</span>
+          </li>
+          <li>
+            <strong>[单位]</strong>
+            <span>物资的所用单位</span>
+          </li>
+          <li>
+            <strong>[重量]</strong>
+            <span>物资单位所用重量</span>
+          </li>
+        </ul>
+      </FlowItem>
+      <FlowItem>
+        <HomeGoodsRadar :goodsData="goods"></HomeGoodsRadar>
       </FlowItem>
     </FlowColumn>
     <HomeGoodsUpdate @close-dialog="closeDialog"
@@ -69,6 +93,8 @@ import FlowColumn from '@/components/layOut/flow/FlowColumn'
 import FlowItem from '@/components/layOut/flow/FlowItem'
 // 增加物资情况组件
 import HomeGoodsAdd from '@/components/homeChild/goods/HomeGoodsAdd.vue'
+// 雷达图
+import HomeGoodsRadar from '@/components/homeChild/goods/HomeGoodsRadar.vue'
 export default {
   data () {
     return {
@@ -82,7 +108,8 @@ export default {
     FlowContainer,
     FlowColumn,
     FlowItem,
-    HomeGoodsUpdate
+    HomeGoodsUpdate,
+    HomeGoodsRadar
   },
   computed: {},
   methods: {

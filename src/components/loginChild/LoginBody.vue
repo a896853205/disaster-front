@@ -1,14 +1,15 @@
 <!-- LoginBody.vue -->
 <template>
   <div id="loginBody">
-    <div class="login-inform-box">
-      <h1 class="box-title">选择工大调查问卷</h1>
+    <!-- <div class="login-inform-box">
+      <h1 class="box-title">地震灾害物资预演系统</h1>
       <ul class="box-list">
         <li>空间无限量,高性能,导出所需文件</li>
         <li>给予用户邮箱反馈,更加亲和</li>
         <li>可视化分析界面,所需数据触手可得</li>
       </ul>
-    </div>
+    </div> -->
+    <img class="login-image" src="../../assets/bigBall.png" alt="">
     <LoginForm class="login-form"></LoginForm>
   </div>
 </template>
@@ -31,23 +32,28 @@ export default {
 </script>
 <style scoped>
 #loginBody {
-  width: 990px;
+  position: relative;
+  width: 1090px;
   margin:0 auto;
   overflow: hidden;
 }
-/* 左边展示信息开始 */
-.login-inform-box {
-  float: left;
-  margin-top: 90px;
+.login-image {
+  position: absolute;
+  top: 0;
+  width: 588px;
+  animation: rotation 600s linear infinite;
 }
-.box-title {
-  margin-bottom: 19px;
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-.box-list {
-  font-size: 14px;
-  line-height: 30px;
-}
-/* 左边展示信息结束 */
 .login-form {
   float: right;
 }

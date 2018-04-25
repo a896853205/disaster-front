@@ -2,8 +2,7 @@
 增加物资情况组件
 '@/components/homeChild/goods/HomeGoodsAdd.vue' -->
 <template>
-  <div>
-    HomeGoodsAdd.vue
+  <div class="add-container">
     <input v-model="goods.name" type="text" placeholder="物资名">
     <input v-model="goods.type_id" type="text" placeholder="物资类型">
     <input v-model="goods.size" type="text" placeholder="规格">

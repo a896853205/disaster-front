@@ -42,10 +42,11 @@ ul > li {
 }
 .login-other-list > li > a:link,
 .login-other-list > li > a:visited {
-  color: #73777A;
+  color: rgb(108, 92, 79);
 }
 .login-other-list > li > a:hover {
-  color: #00C1DE;
+  color: #83710c;
+  text-decoration: underline;
 }
 /* login页other样式结束 */
 /* login页脚base样式开始 */
@@ -54,10 +55,10 @@ ul > li {
 }
 .login-base-list > li > a:link,
 .login-base-list > li > a:visited {
-  color: #9b9ea0;
+  color: rgb(73, 63, 53);
 }
 .login-base-list > li > a:hover {
-  color: #00C1DE;
+  color: #fff;
 }
 /* login页脚base样式结束 */
 /* login页脚other样式开始 */
@@ -83,27 +84,12 @@ ul > li {
 }
 .login-head-list > li > a:link,
 .login-head-list > li > a:visited {
-  color: #fff;
+  color: rgb(113, 97, 81);
 }
 .login-head-list > li > a:hover {
-  color: #00C1DE;
+  color: #fff;
 }
 /* login页头部样式结束 */
-/* register页头部样式开始*/
-.register-head-list > li > a {
-  padding: 23px 20px;
-  font-size: 14px;
-  line-height: 14px;
-  display: inline-block;
-}
-.register-head-list > li > a:link,
-.register-head-list > li > a:visited {
-  color: #373D41;
-}
-.register-head-list > li > a:hover {
-  color: #00C1DE;
-}
-/* register页头部样式结束*/
 /* home页头样式开始 */
 .home-head-list > li > a {
   padding: 18px;
@@ -114,11 +100,10 @@ ul > li {
 }
 .home-head-list > li > a:link,
 .home-head-list > li > a:visited {
-  background: #373d41;
-  color: #fff;
+  color: rgb(113, 97, 81);
 }
 .home-head-list > li > a:hover{
-  background: #2a2f32;
+  color: #fff;
 }
 /* home页头样式结束 */
 </style>

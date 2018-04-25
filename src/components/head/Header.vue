@@ -4,8 +4,8 @@ import Header from '@/components/head/Header'
  -->
 <template>
   <div id="top" :class="listData.style">
-    <img class="web-logo web-white-logo" src="../../assets/white-logo.png" alt="LOGO">
-    <img class="web-logo web-black-logo" src="../../assets/black-logo.png" alt="LOGO">
+    <i class="iconfont icon-jiankong web-logo"></i>
+    <h1 class="title-h1">地震灾害预演系统</h1>
     <UlPack class="head" :listClass="listData.style" :linkList="listData.data"></UlPack>
   </div>
 </template>
@@ -32,62 +32,62 @@ export default {
   float: right;
 }
 .web-logo {
+  float: left;
+  font-size: 35px;
+  color: rgb(234, 211, 83);
   cursor: pointer;
-  animation: rotation 20s infinite;
+  animation: rotation 10s infinite;
 }
 @keyframes rotation {
   0% {
-    transform: rotate(0);
+    transform: rotate3d(1, 1, 0, 0);
   }
-  5% {
-    transform: rotate(180deg);
-  }
-  95% {
-    transform: rotate(180deg);
+  50% {
+    transform: rotate3d(1, 1, 0, 360deg);
   }
   100% {
-    transform: rotate(0);
+    transform: rotate3d(1, 1, 0, 0);
   }
 }
 /* 登录头部样式开始 */
 .login-head-list {
   height: 60px;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  background: rgb(0, 0, 0);
+  color: rgb(113, 97, 81);
 }
 .login-head-list .web-black-logo {
   display: none;
 }
 .login-head-list .web-logo {
-  height: 35px;
-  margin-top: 12.5px;
+  line-height: 60px;
   margin-left: 30px;
+}
+.login-head-list .title-h1 {
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 20px;
+  font-size: 20px;
+  color: rgb(113, 97, 81);
 }
 /* 登录头部样式结束 */
-/* 注册头部样式开始 */
-.register-head-list {
-  height: 60px;
-  border-bottom: 1px solid #D7D8D9;
-}
-.register-head-list .web-white-logo {
-  display: none;
-}
-.register-head-list .web-logo {
-  height: 35px;
-  margin-top: 12.5px;
-  margin-left: 30px;
-}
-/* 注册头部样式结束 */
 /* home页头部样式开始 */
 .home-head-list {
   height: 50px;
+  background: rgb(0, 0, 0);
+  color: rgb(113, 97, 81);
 }
 .home-head-list .web-logo {
-  height: 30px;
-  margin: 10px 15px;
-  /* border-right: 1px solid #2a2f32; */
+  line-height: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
-.home-head-list .web-black-logo {
-  display: none;
+.home-head-list .title-h1 {
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  color: rgb(113, 97, 81);
 }
 /* home页头部样式结束 */
 </style>

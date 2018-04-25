@@ -5,8 +5,28 @@ import Foot from '@/components/foot/Footer'
 <template>
   <div id="buttom">
     <div class="container" :class="type">
+      <img class="small-ball" src="../../assets/smallBall.jpg" alt="">
+      <ul class="icon-ul">
+        <li>
+          <i class="iconfont icon-wechat"></i>
+        </li>
+        <li>
+          <i class="iconfont icon-weibo"></i>
+        </li>
+        <li>
+          <i class="iconfont icon-qq"></i>
+        </li>
+        <li>
+          <i class="iconfont icon-github"></i>
+        </li>
+        <li>
+          <i class="iconfont icon-twitter"></i>
+        </li>
+        <li>
+          <i class="iconfont icon-facebook"></i>
+        </li>
+      </ul>
       <UlPack class="foot-base" :listClass="footBaseOpation.style" :linkList="footBaseOpation.data"></UlPack>
-      <UlPack :listClass="footOtherOpation.style" :linkList="footOtherOpation.data"></UlPack>
       <p class="copyright">© 2009-2018 版权所有 ICP证：XXXX-200XXXXX </p>
       <p class="copyright"> XX网安备 xxxxxxx000099号 </p>
     </div>
@@ -36,67 +56,6 @@ export default {
           href: ''
         }],
         style: 'login-base-list'
-      },
-      footOtherOpation: {
-        data: [{
-          name: '阿里巴巴集团',
-          href: ''
-        }, {
-          name: '淘宝网',
-          href: ''
-        }, {
-          name: '天猫',
-          href: ''
-        }, {
-          name: '聚划算',
-          href: ''
-        }, {
-          name: '全球速卖通',
-          href: ''
-        }, {
-          name: '阿里巴巴国际交易市场',
-          href: ''
-        }, {
-          name: '1688',
-          href: ''
-        }, {
-          name: '阿里妈妈',
-          href: ''
-        }, {
-          name: 'YunOs',
-          href: ''
-        }, {
-          name: '阿里通信',
-          href: ''
-        }, {
-          name: '万网',
-          href: ''
-        }, {
-          name: '高德',
-          href: ''
-        }, {
-          name: 'UC',
-          href: ''
-        }, {
-          name: '友盟',
-          href: ''
-        }, {
-          name: '虾米',
-          href: ''
-        }, {
-          name: '阿里星球',
-          href: ''
-        }, {
-          name: '来往',
-          href: ''
-        }, {
-          name: '钉钉',
-          href: ''
-        }, {
-          name: '支付宝',
-          href: ''
-        }],
-        style: 'login-foot-other-list'
       }
     }
   },
@@ -110,23 +69,51 @@ export default {
 <style scoped>
 #buttom {
   padding: 20px;
-  background:rgba(0,0,0,0);
+  background:rgb(0,0,0);
   box-sizing: border-box;
 }
 .container {
+  position: relative;
   width: 1200px;
   margin: 0 auto;
+  overflow: hidden;
 }
 .foot-base {
   margin-top: 10px;
   margin-bottom: 35px;
 }
 .copyright {
-  color: #73777A;
+  color: rgb(73, 63, 53);
 }
 /* 注册脚部不同处开始 */
 .register-foot {
   border-top: 1px solid rgb(207, 208, 209);
 }
 /* 注册脚部不同处结束 */
+/* 底部图标开始 */
+.icon-ul {
+  overflow: hidden;
+}
+.icon-ul > li{
+  float: left;
+  margin-right: 10px;
+}
+.iconfont {
+  color: rgb(113, 97, 87);
+  font-size: 25px;
+  transition: .3s;
+}
+.iconfont:hover {
+  color: #fff;
+  cursor: pointer;
+}
+/* 底部图标结束 */
+/* 下面的小球图片开始 */
+.small-ball {
+  position: absolute;
+  right: 100px; top: 0;
+  width: 200px;
+  transform: rotate(90deg);
+}
+/* 下面的小球图片结束 */
 </style>

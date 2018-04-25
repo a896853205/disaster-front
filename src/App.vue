@@ -49,4 +49,20 @@ a {
   fill: currentColor;
   overflow: hidden;
 }
+/* 增加组件通用开始 */
+.add-container {
+  padding: 20px;
+}
+/* 增加组件通用结束 */
+/* 描述通用样式开始 */
+.describe-ul {
+  padding: 20px;
+  font-size: 12px;
+  color: #666;
+}
+.describe-ul li {
+  height: 24px;
+  line-height: 24px;
+}
+/* 描述通用样式结束 */
 </style>

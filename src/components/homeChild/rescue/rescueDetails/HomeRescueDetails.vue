@@ -86,7 +86,8 @@
     </FlowColumn>
     <FlowColumn col='6'>
       <FlowItem>
-        图表
+        <HomeRescueDetailsPie :detailsData="{rescueGoods, rescueVehicle}"
+        ></HomeRescueDetailsPie>
       </FlowItem>
       <FlowItem>
         <HomeRescueGoodsAdd @add-success="pageInit"
@@ -121,6 +122,8 @@ import FlowContainer from '@/components/layOut/flow/FlowContainer'
 import FlowColumn from '@/components/layOut/flow/FlowColumn'
 // flow布局每条列
 import FlowItem from '@/components/layOut/flow/FlowItem'
+// 物资点细节饼形图
+import HomeRescueDetailsPie from '@/components/homeChild/rescue/rescueDetails/HomeRescueDetailsPie.vue'
 export default {
   data () {
     return {
@@ -145,7 +148,8 @@ export default {
     HomeRescueGoodsAdd,
     HomeRescueGoodsUpdate,
     HomeRescueVehicleAdd,
-    HomeRescueVehicleUpdate
+    HomeRescueVehicleUpdate,
+    HomeRescueDetailsPie
   },
   computed: {},
   methods: {

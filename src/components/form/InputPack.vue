@@ -34,13 +34,13 @@ export default {
 .input-pack {
   width: 100%;
   padding: 0 10px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(27, 20 , 14);;
   color: #595959;
   line-height: 40px;
 }
-.input-pack:hover {
+/* .input-pack:hover {
   border-color: #00C1DE;
-}
+}*/
 .input-pack:focus {
   box-shadow: 0 0 3px #ddd;
 }

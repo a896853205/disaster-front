@@ -18,22 +18,26 @@
         prop="vehicle_name"
         label="交通类型">
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="area_id"
         label="灾区id">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         prop="area_name"
         label="灾区名">
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="rescue_id"
         label="物资点id">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
+        prop="rescue_name"
+        label="物资点id">
+      </el-table-column>
+      <!-- <el-table-column
         prop="good_id"
         label="货物id">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         prop="good_name"
         label="货物名称">

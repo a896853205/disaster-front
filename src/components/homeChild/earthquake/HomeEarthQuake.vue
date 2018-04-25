@@ -3,7 +3,6 @@
 '@/components/homeChild/earthquake/HomeEarthQuake.vue' -->
 <template>
   <div>
-    HomeEarthQuake.vue
     <router-view></router-view>
   </div>
 </template>

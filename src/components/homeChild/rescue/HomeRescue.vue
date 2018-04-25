@@ -8,8 +8,29 @@
         <HomeRescueAdd @add-success="showAllRescue"></HomeRescueAdd>
       </FlowItem>
       <FlowItem>
-        增加描述
+        <ul class="describe-ul">
+          <li>
+            <strong>[物资点名]</strong>
+            <span>预演物资点的地点名</span>
+          </li>
+          <li>
+            <strong>[经度]</strong>
+            <span>预演灾区的所在经度</span>
+          </li>
+          <li>
+            <strong>[纬度]</strong>
+            <span>预演灾区的所在纬度</span>
+          </li>
+          <li>
+            <strong>[是否可用]</strong>
+            <span>预演物资点在发生灾害时是否可用</span>
+          </li>
+        </ul>
       </FlowItem>
+      <FlowItem>
+        <HomeRescueShow :rescueData = "rescue"></HomeRescueShow>
+      </FlowItem>
+      
     </FlowColumn>
     <FlowColumn col="8">
       <FlowItem>
@@ -20,7 +41,7 @@
           style="width: 100%">
           <el-table-column
             prop="name"
-            label="地点名">
+            label="物资点名">
           </el-table-column>
           <el-table-column
             prop="latitude"
@@ -36,7 +57,7 @@
             :formatter="isOpen">
           </el-table-column>
           <el-table-column
-            label="查看当前货物">
+            label="查看当前细节">
             <template slot-scope="scope">
                <el-button
                 size="mini"
@@ -77,6 +98,8 @@ import FlowColumn from '@/components/layOut/flow/FlowColumn'
 import FlowItem from '@/components/layOut/flow/FlowItem'
 // 物资点情况增加组件
 import HomeRescueAdd from '@/components/homeChild/rescue/HomeRescueAdd.vue'
+// 物资点数目组件
+import HomeRescueShow from '@/components/homeChild/rescue/HomeRescueShow.vue'
 export default {
   data () {
     return {
@@ -90,7 +113,8 @@ export default {
     FlowContainer,
     FlowColumn,
     FlowItem,
-    HomeRescueUpdate
+    HomeRescueUpdate,
+    HomeRescueShow
   },
   computed: {},
   methods: {

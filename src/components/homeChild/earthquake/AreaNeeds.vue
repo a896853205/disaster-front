@@ -84,7 +84,9 @@ export default {
         }
       })
       return needArr
-    },
+    }
+  },
+  methods: {
     /**
      * 开始分配物资
      */
@@ -102,8 +104,7 @@ export default {
         location.href = '/#/home/earthquake/AreaNeedsRescue'
       })
     }
-  },
-  methods: {}
+  }
 }
 </script>
 <style scoped>

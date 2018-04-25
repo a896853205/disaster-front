@@ -42,11 +42,8 @@ export default {
 }
 </script>
 <style scoped>
-#login {
-  background: #373d41;
-}
 .login-background {
-  background: url('../assets/login-background.jpg');
+  background: rgb(28, 21, 15);
   background-size: cover;
 }
 .login-body {
