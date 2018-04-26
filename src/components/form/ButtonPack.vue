@@ -29,7 +29,6 @@ export default {
   line-height: 40px;
   border: 0;
   background-color: rgb(28, 21, 15);
-  box-shadow: 1px 1px 3px #ddd;
   color: rgb(206, 197, 190);
   font-weight: 700;
   font-size: 14px;

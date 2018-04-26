@@ -125,7 +125,7 @@ export default {
 
 <style scoped>
 .home-head {
-  background: #373d41;
+  background: rgb(0, 0, 0);
 }
 .home-nav {
   height: 100%;
@@ -136,7 +136,7 @@ export default {
 .home-show {
   height: calc(100% - 50px);
   padding: 8px 1% 0;
-  background: #eaedf1;
+  background: rgb(88, 79, 74);
   position: absolute;
   transition: .2s;
   left: 0;

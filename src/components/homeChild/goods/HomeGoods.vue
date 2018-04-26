@@ -5,11 +5,14 @@
   <FlowContainer>
     <FlowColumn col="8">
       <FlowItem>
+        <FlowItemHead>物品字典</FlowItemHead>
         <el-table
           :data="goods"
-          height="680"
           border
-          style="width: 100%">
+          style="width: 100%"
+          :cell-style="cellStyle"
+          :header-row-style="headerRowStyle"
+          :header-cell-style="headerRowStyle">
           <el-table-column
             prop="name"
             label="物资名">
@@ -31,14 +34,11 @@
             label="重量">
           </el-table-column>
           <el-table-column
-            label="操作">
+            label="操作"
+            width="80">
             <template slot-scope="scope">
-              <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)">编辑</el-button><el-button
-                size="mini"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              <i class="iconfont icon-pen" @click="handleEdit(scope.$index, scope.row)"></i>
+              <i class="iconfont icon-bin" @click="handleDelete(scope.$index, scope.row)"></i>
             </template>
           </el-table-column>
         </el-table>
@@ -46,9 +46,11 @@
     </FlowColumn>
     <FlowColumn col="4">
       <FlowItem>
+        <FlowItemHead>增加物品表单</FlowItemHead>
         <HomeGoodsAdd @add-success="showAllGoods"></HomeGoodsAdd>
       </FlowItem>
       <FlowItem>
+        <FlowItemHead>增加物品详情规则</FlowItemHead>
         <ul class="describe-ul">
           <li>
             <strong>[物资名]</strong>
@@ -73,6 +75,7 @@
         </ul>
       </FlowItem>
       <FlowItem>
+        <FlowItemHead>物品重量雷达图</FlowItemHead>
         <HomeGoodsRadar :goodsData="goods"></HomeGoodsRadar>
       </FlowItem>
     </FlowColumn>
@@ -91,6 +94,8 @@ import FlowContainer from '@/components/layOut/flow/FlowContainer'
 import FlowColumn from '@/components/layOut/flow/FlowColumn'
 // flow布局每条列
 import FlowItem from '@/components/layOut/flow/FlowItem'
+// flow布局布局头部
+import FlowItemHead from '@/components/layOut/flow/FlowItemHead'
 // 增加物资情况组件
 import HomeGoodsAdd from '@/components/homeChild/goods/HomeGoodsAdd.vue'
 // 雷达图
@@ -108,6 +113,7 @@ export default {
     FlowContainer,
     FlowColumn,
     FlowItem,
+    FlowItemHead,
     HomeGoodsUpdate,
     HomeGoodsRadar
   },
@@ -146,6 +152,20 @@ export default {
       .then(res => {
         this.goods = res.data.allGoods
       })
+    },
+    /* 表格样式 */
+    cellStyle () {
+      return {
+        backgroundColor: 'rgb(206, 197, 190)',
+        borderColor: '#584f4a'
+      }
+    },
+    headerRowStyle () {
+      return {
+        backgroundColor: '#584f4a',
+        color: '#fff',
+        borderColor: 'rgb(206, 197, 190)'
+      }
     }
   },
   beforeMount () {
@@ -154,4 +174,8 @@ export default {
 }
 </script>
 <style scoped>
+.iconfont {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 </style>

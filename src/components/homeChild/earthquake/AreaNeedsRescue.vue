@@ -5,32 +5,23 @@
   <FlowContainer>
     <FlowColumn col="6">
       <FlowItem>
-        <h1>灾区需要物资点具体货物</h1>
+        <FlowItemHead>
+          灾区需要物资点具体货物
+        </FlowItemHead>
         <el-table
           :data="areaNeedResult"
-          tooltip-effect="dark"
-          style="width: 100%"
-        >
-          <!-- <el-table-column
-            prop="area_id"
-            label="地区编号">
-          </el-table-column> -->
+          :cell-style="cellStyle"
+          :header-row-style="headerRowStyle"
+          :header-cell-style="headerRowStyle"
+          style="width: 100%">
           <el-table-column
             prop="area_name"
             label="地区名">
           </el-table-column>
-          <!-- <el-table-column
-            prop="rescue_id"
-            label="物资点编号">
-          </el-table-column> -->
           <el-table-column
             prop="rescue_name"
             label="物资点名">
           </el-table-column>
-          <!-- <el-table-column
-            prop="good_id"
-            label="货物id">
-          </el-table-column> -->
           <el-table-column
             prop="good_name"
             label="货物名">
@@ -40,19 +31,18 @@
             label="需要数量">
           </el-table-column>
         </el-table>
-        <el-button type="primary"
-               @click.native="startLoad">
-          开始整理装载
-        </el-button>
       </FlowItem>
     </FlowColumn>
     <FlowColumn col="6">
       <FlowItem>
-        物资点缺少的货物
+        <FlowItemHead>
+          物资点缺少的货物
+        </FlowItemHead>
         <el-table
-          height="400"
           :data="unPut"
-          tooltip-effect="dark"
+          :cell-style="cellStyle"
+          :header-row-style="headerRowStyle"
+          :header-cell-style="headerRowStyle"
           style="width: 100%">
           <el-table-column
             prop="area_name"
@@ -66,6 +56,13 @@
           </el-table-column>
         </el-table>
       </FlowItem>
+      <FlowItem :transparent="true">
+        <div class="button-item">
+          <ButtonPack @click.native="startLoad">
+            开始整理装载
+          </ButtonPack>
+        </div>
+      </FlowItem>
     </FlowColumn>
   </FlowContainer>
 </template>
@@ -77,6 +74,10 @@ import FlowContainer from '@/components/layOut/flow/FlowContainer'
 import FlowColumn from '@/components/layOut/flow/FlowColumn'
 // flow布局每条列
 import FlowItem from '@/components/layOut/flow/FlowItem'
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
+// flow布局布局头部
+import FlowItemHead from '@/components/layOut/flow/FlowItemHead'
 export default {
   data () {
     return {
@@ -86,7 +87,9 @@ export default {
   components: {
     FlowContainer,
     FlowColumn,
-    FlowItem
+    FlowItem,
+    ButtonPack,
+    FlowItemHead
   },
   computed: {
     /**
@@ -152,6 +155,20 @@ export default {
         res.data.upLoadArr)
         location.href = '/#/home/earthquake/RescueUpLoad'
       })
+    },
+    /* 表格样式 */
+    cellStyle () {
+      return {
+        backgroundColor: 'rgb(206, 197, 190)',
+        borderColor: '#584f4a'
+      }
+    },
+    headerRowStyle () {
+      return {
+        backgroundColor: '#584f4a',
+        color: '#fff',
+        borderColor: 'rgb(206, 197, 190)'
+      }
     }
   }
 }

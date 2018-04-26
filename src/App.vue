@@ -49,6 +49,18 @@ a {
   fill: currentColor;
   overflow: hidden;
 }
+.icon-pen:hover {
+  color: #eac52a;
+  cursor: pointer;
+}
+.icon-bin:hover {
+  color: #eac52a;
+  cursor: pointer;
+}
+.icon-eye:hover {
+  color: #eac52a;
+  cursor: pointer;
+}
 /* 增加组件通用开始 */
 .add-container {
   padding: 20px;
@@ -65,4 +77,8 @@ a {
   line-height: 24px;
 }
 /* 描述通用样式结束 */
+/* 重置element-ui表格 */
+.el-table--border {
+  border-color: #584f4a!important;
+}
 </style>

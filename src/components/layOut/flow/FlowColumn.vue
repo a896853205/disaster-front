@@ -25,6 +25,7 @@ export default {
      */
     getWidth () {
       switch (this.col) {
+        case '12': return 'col-md-12'
         case '8': return 'col-md-8'
         case '6': return 'col-md-6'
         case '4': return 'col-md-4'
@@ -39,6 +40,9 @@ export default {
 .flow-container {
   display: flex;
   flex-direction: column;
+}
+.col-md-12 {
+  width: 100%;
 }
 .col-md-8 {
   width: 66.25%;

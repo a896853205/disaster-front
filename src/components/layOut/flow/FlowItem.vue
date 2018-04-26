@@ -1,9 +1,9 @@
 <!-- FlowItem.vue
 // flow布局每块
-import FlowItem from '@/components/layOut/flow/FlowItem'
+'@/components/layOut/flow/FlowItem'
  -->
 <template>
-  <div class="flow-item">
+  <div :class="transparent ? 'background-transparent': 'background-white'" class="flow-item">
     <slot>
       // FlowItem.vue
     </slot>
@@ -12,6 +12,7 @@ import FlowItem from '@/components/layOut/flow/FlowItem'
 
 <script>
 export default {
+  props: ['transparent'],
   name: 'flowItem',
   data () {
     return {
@@ -26,7 +27,12 @@ export default {
 .flow-item {
   width: 100%;
   margin: 8px 0;
-  background: #fff;
+}
+.background-transparent {
+  background: transparent;
+}
+.background-white {
+  background: rgb(206, 197, 190);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 </style>

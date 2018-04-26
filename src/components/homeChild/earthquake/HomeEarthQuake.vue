@@ -2,9 +2,7 @@
 地震模拟组件
 '@/components/homeChild/earthquake/HomeEarthQuake.vue' -->
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -18,5 +16,8 @@ export default {
   methods: {}
 }
 </script>
-<style scoped>
+<style>
+.button-item {
+  width: 200px;
+}
 </style>

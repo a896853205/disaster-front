@@ -5,11 +5,16 @@
   <FlowContainer>
     <FlowColumn col='6'>
       <FlowItem>
+        <FlowItemHead>
+          物资点物资总览
+        </FlowItemHead>
         <el-table
           :data="rescueGoods"
-          height="330"
           border
-          style="width: 100%">
+          style="width: 100%"
+          :cell-style="cellStyle"
+          :header-row-style="headerRowStyle"
+          :header-cell-style="headerRowStyle">
           <el-table-column
             prop="name"
             label="地点名">
@@ -20,43 +25,37 @@
           </el-table-column>
           <el-table-column
             prop="unit"
-            label="单位"
-            width="60">
+            label="单位">
           </el-table-column>
           <el-table-column
             prop="weight"
-            label="重量"
-            width="50">
+            label="重量">
           </el-table-column>
           <el-table-column
             prop="amount"
-            label="数量"
-            width="50">
-          </el-table-column>
-          <el-table-column
-            prop="typeName"
-            label="类型名">
+            label="数量">
           </el-table-column>
           <el-table-column
             label="操作"
-            width="150">
+            width="80">
             <template slot-scope="scope">
-              <el-button
-                size="mini"
-                @click="handleGoodsEdit(scope.$index, scope.row)">编辑</el-button><el-button
-                size="mini"
-                type="danger"
-                @click="handleGoodsDelete(scope.$index, scope.row)">删除</el-button>
+              <i class="iconfont icon-pen" @click="handleGoodsEdit(scope.$index, scope.row)"></i>
+              <i class="iconfont icon-bin" @click="handleGoodsDelete(scope.$index, scope.row)"></i>
             </template>
           </el-table-column>
         </el-table>
       </FlowItem>
       <FlowItem>
+        <FlowItemHead>
+          物资点交通工具总览
+        </FlowItemHead>
         <el-table
           :data="rescueVehicle"
-          height="330"
           border
-          style="width: 100%">
+          style="width: 100%"
+          :cell-style="cellStyle"
+          :header-row-style="headerRowStyle"
+          :header-cell-style="headerRowStyle">
           <el-table-column
             prop="name"
             label="交通工具名">
@@ -71,29 +70,33 @@
           </el-table-column>
           <el-table-column
             label="操作"
-            width="150">
+            width="80">
             <template slot-scope="scope">
-              <el-button
-                size="mini"
-                @click="handleVehicleEdit(scope.$index, scope.row)">编辑</el-button><el-button
-                size="mini"
-                type="danger"
-                @click="handleVehicleDelete(scope.$index, scope.row)">删除</el-button>
+              <i class="iconfont icon-pen" @click="handleVehicleEdit(scope.$index, scope.row)"></i>
+              <i class="iconfont icon-bin" @click="handleVehicleDelete(scope.$index, scope.row)"></i>
             </template>
           </el-table-column>
         </el-table>
       </FlowItem>
     </FlowColumn>
     <FlowColumn col='6'>
-      <FlowItem>
-        <HomeRescueDetailsPie :detailsData="{rescueGoods, rescueVehicle}"
-        ></HomeRescueDetailsPie>
+      <FlowItem :transparent="true">
+        <FlowItemHead>
+          物资点饼图总览
+        </FlowItemHead>
+        <HomeRescueDetailsPie :detailsData="{rescueGoods, rescueVehicle}"></HomeRescueDetailsPie>
       </FlowItem>
       <FlowItem>
+        <FlowItemHead>
+          物资点初始化物资
+        </FlowItemHead>
         <HomeRescueGoodsAdd @add-success="pageInit"
                             :addRescueGoodsDictionariy="addRescueGoodsDictionariy"></HomeRescueGoodsAdd>
       </FlowItem>
       <FlowItem>
+        <FlowItemHead>
+          物资点初始化交通工具
+        </FlowItemHead>
         <HomeRescueVehicleAdd @add-success="pageInit"
                             :addRescueVehicleDictionariy="addRescueVehicleDictionariy"></HomeRescueVehicleAdd>
       </FlowItem>
@@ -122,6 +125,8 @@ import FlowContainer from '@/components/layOut/flow/FlowContainer'
 import FlowColumn from '@/components/layOut/flow/FlowColumn'
 // flow布局每条列
 import FlowItem from '@/components/layOut/flow/FlowItem'
+// flow布局布局头部
+import FlowItemHead from '@/components/layOut/flow/FlowItemHead'
 // 物资点细节饼形图
 import HomeRescueDetailsPie from '@/components/homeChild/rescue/rescueDetails/HomeRescueDetailsPie.vue'
 export default {
@@ -145,6 +150,7 @@ export default {
     FlowContainer,
     FlowColumn,
     FlowItem,
+    FlowItemHead,
     HomeRescueGoodsAdd,
     HomeRescueGoodsUpdate,
     HomeRescueVehicleAdd,
@@ -246,6 +252,20 @@ export default {
       this.pageInit()
       this.isUpdate = false
       this.isVehicleUpdate = false
+    },
+    /* 表格样式 */
+    cellStyle () {
+      return {
+        backgroundColor: 'rgb(206, 197, 190)',
+        borderColor: '#584f4a'
+      }
+    },
+    headerRowStyle () {
+      return {
+        backgroundColor: '#584f4a',
+        color: '#fff',
+        borderColor: 'rgb(206, 197, 190)'
+      }
     }
   },
   beforeMount () {
@@ -254,4 +274,8 @@ export default {
 }
 </script>
 <style scoped>
+.iconfont {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 </style>

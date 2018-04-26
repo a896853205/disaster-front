@@ -117,7 +117,7 @@ export default {
 <style scoped>
 .nav {
   height: 100%; width: 100%;
-  background: #333744;
+  background: rgb(0, 0, 0);
   float: left;
   box-sizing: border-box;
   color: #eee;
@@ -127,7 +127,7 @@ export default {
 .change-button {
   height: 30px;  width: 100%;
   border: 0;
-  background: #4A5064;
+  background: rgb(30, 21, 16);
   color: #aeb9c2;
   text-align: center;
   line-height: 30px;
@@ -144,8 +144,11 @@ export default {
   -moz-user-select: none;
   -webkit-user-select: none;
 }
+.par-a {
+  border-left: 0 solid rgb(234,210,84);
+}
 .par-a:hover {
-  background: rgb(0,193,222);
+  border-left: 10px solid rgb(234,210,84);
 }
 /* .nav li:hover {
   background: #232a2f;
@@ -176,7 +179,7 @@ export default {
 } */
 /* 列表主选项的颜色,样式开始 */
 .active-li > a {
-  background: #42485B;
+  background: rgb(30, 21, 16);
 }
 .active-li a,
 .active-li .fa {
@@ -200,4 +203,5 @@ export default {
 .child-li:hover a{
   left: 15px;
 }
+
 </style>

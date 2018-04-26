@@ -5,9 +5,11 @@
   <FlowContainer>
     <FlowColumn col="4">
       <FlowItem>
+        <FlowItemHead>物资点增加</FlowItemHead>
         <HomeRescueAdd @add-success="showAllRescue"></HomeRescueAdd>
       </FlowItem>
       <FlowItem>
+        <FlowItemHead>物资点增加描述</FlowItemHead>
         <ul class="describe-ul">
           <li>
             <strong>[物资点名]</strong>
@@ -28,17 +30,20 @@
         </ul>
       </FlowItem>
       <FlowItem>
+        <FlowItemHead>物资点总结数值</FlowItemHead>
         <HomeRescueShow :rescueData = "rescue"></HomeRescueShow>
       </FlowItem>
-      
     </FlowColumn>
     <FlowColumn col="8">
       <FlowItem>
+        <FlowItemHead>物资点总览表格</FlowItemHead>
         <el-table
           :data="rescue"
-          height="680"
           border
-          style="width: 100%">
+          style="width: 100%"
+          :cell-style="cellStyle"
+          :header-row-style="headerRowStyle"
+          :header-cell-style="headerRowStyle">
           <el-table-column
             prop="name"
             label="物资点名">
@@ -57,25 +62,12 @@
             :formatter="isOpen">
           </el-table-column>
           <el-table-column
-            label="查看当前细节">
+            label="操作"
+            width="120">
             <template slot-scope="scope">
-               <el-button
-                size="mini"
-                @click="handleShowGoods(scope.$index, scope.row)"
-                width="100">
-                  查看
-                </el-button>
-            </template>
-          </el-table-column>
-          <el-table-column
-            label="操作">
-            <template slot-scope="scope">
-              <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)">编辑</el-button><el-button
-                size="mini"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              <i class="iconfont icon-eye" @click="handleShowGoods(scope.$index, scope.row)"></i>
+              <i class="iconfont icon-pen" @click="handleEdit(scope.$index, scope.row)"></i>
+              <i class="iconfont icon-bin" @click="handleDelete(scope.$index, scope.row)"></i>
             </template>
           </el-table-column>
         </el-table>
@@ -100,6 +92,8 @@ import FlowItem from '@/components/layOut/flow/FlowItem'
 import HomeRescueAdd from '@/components/homeChild/rescue/HomeRescueAdd.vue'
 // 物资点数目组件
 import HomeRescueShow from '@/components/homeChild/rescue/HomeRescueShow.vue'
+// flow布局布局头部
+import FlowItemHead from '@/components/layOut/flow/FlowItemHead'
 export default {
   data () {
     return {
@@ -113,6 +107,7 @@ export default {
     FlowContainer,
     FlowColumn,
     FlowItem,
+    FlowItemHead,
     HomeRescueUpdate,
     HomeRescueShow
   },
@@ -164,6 +159,20 @@ export default {
         })
         this.showAllRescue()
       })
+    },
+    /* 表格样式 */
+    cellStyle () {
+      return {
+        backgroundColor: 'rgb(206, 197, 190)',
+        borderColor: '#584f4a'
+      }
+    },
+    headerRowStyle () {
+      return {
+        backgroundColor: '#584f4a',
+        color: '#fff',
+        borderColor: 'rgb(206, 197, 190)'
+      }
     }
   },
   beforeMount () {
@@ -172,4 +181,11 @@ export default {
 }
 </script>
 <style scoped>
+.iconfont {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.cell-type {
+  background: rgb(206, 197, 190);
+}
 </style>

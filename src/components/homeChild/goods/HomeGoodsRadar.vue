@@ -30,9 +30,6 @@ export default {
       })
       let areaEchart = echarts.init(this.$refs.radarChart)
       areaEchart.setOption({
-        title: {
-          text: '货物重量'
-        },
         tooltip: {},
         legend: {
           data: ['货物重量']

@@ -91,6 +91,6 @@ export default {
 </script>
 <style scoped>
 .bar-chart {
-  height: 330px; width: 100%;
+  height: 290px; width: 100%;
 }
 </style>
