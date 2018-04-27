@@ -86,20 +86,28 @@
         </FlowItemHead>
         <HomeRescueDetailsPie :detailsData="{rescueGoods, rescueVehicle}"></HomeRescueDetailsPie>
       </FlowItem>
-      <FlowItem>
-        <FlowItemHead>
-          物资点初始化物资
-        </FlowItemHead>
-        <HomeRescueGoodsAdd @add-success="pageInit"
-                            :addRescueGoodsDictionariy="addRescueGoodsDictionariy"></HomeRescueGoodsAdd>
-      </FlowItem>
-      <FlowItem>
-        <FlowItemHead>
-          物资点初始化交通工具
-        </FlowItemHead>
-        <HomeRescueVehicleAdd @add-success="pageInit"
-                            :addRescueVehicleDictionariy="addRescueVehicleDictionariy"></HomeRescueVehicleAdd>
-      </FlowItem>
+      <FlowContainer>
+        <FlowColumn col='6'>
+          <FlowItem>
+            <FlowItemHead>
+              物资点初始化物资
+            </FlowItemHead>
+            <HomeRescueGoodsAdd @add-success="pageInit"
+                                :addRescueGoodsDictionariy="addRescueGoodsDictionariy">
+            </HomeRescueGoodsAdd>
+          </FlowItem>
+        </FlowColumn>
+        <FlowColumn col='6'>
+          <FlowItem>
+            <FlowItemHead>
+              物资点初始化交通工具
+            </FlowItemHead>
+            <HomeRescueVehicleAdd @add-success="pageInit"
+                                :addRescueVehicleDictionariy="addRescueVehicleDictionariy">
+            </HomeRescueVehicleAdd>
+          </FlowItem>
+        </FlowColumn>
+      </FlowContainer>
     </FlowColumn>
     <HomeRescueGoodsUpdate @close-dialog="closeDialog"
                            :updateRescueGoods = updateRescueGoods

@@ -4,18 +4,22 @@
  -->
 <template>
   <div class="add-container">
-    <input v-model="area.name" type="text" placeholder="地点名">
-    <input v-model="area.population" type="text" placeholder="人口数">
-    <input v-model="area.density" type="text" placeholder="人口密度">
-    <input v-model="area.latitude" type="text" placeholder="经度">
-    <input v-model="area.longitude" type="text" placeholder="纬度">
-    <button type="button" @click="save">
+    <InputPack @getValue="getName" type="text" class="mar-bom-small" placeholder="地点名"></InputPack>
+    <InputPack @getValue="getPopulation" type="text" class="mar-bom-small" placeholder="人口数"></InputPack>
+    <InputPack @getValue="getDensity" type="text" class="mar-bom-small" placeholder="人口密度"></InputPack>
+    <InputPack @getValue="getLatitude" type="text" class="mar-bom-small" placeholder="经度"></InputPack>
+    <InputPack @getValue="getLongitude" type="text" class="mar-bom-small" placeholder="纬度"></InputPack>
+    <ButtonPack @click.native="save">
       保存
-    </button>
+    </ButtonPack>
   </div>
 </template>
 
 <script>
+// input组件
+import InputPack from '@/components/form/InputPack'
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   data () {
     return {
@@ -28,9 +32,27 @@ export default {
       }
     }
   },
-  components: {},
+  components: {
+    InputPack,
+    ButtonPack
+  },
   computed: {},
   methods: {
+    getName (value) {
+      this.area.name = value
+    },
+    getPopulation (value) {
+      this.area.population = value
+    },
+    getDensity (value) {
+      this.area.density = value
+    },
+    getLatitude (value) {
+      this.area.latitude = value
+    },
+    getLongitude (value) {
+      this.area.longitude = value
+    },
     save () {
       this.$http.post('/home/addArea', this.area)
       .then(res => {

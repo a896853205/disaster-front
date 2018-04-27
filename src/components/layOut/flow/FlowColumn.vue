@@ -29,6 +29,7 @@ export default {
         case '8': return 'col-md-8'
         case '6': return 'col-md-6'
         case '4': return 'col-md-4'
+        case '3': return 'col-md-3'
         default: break
       }
     }
@@ -52,5 +53,8 @@ export default {
 }
 .col-md-4 {
   width: 32.5%;
+}
+.col-md-3 {
+  width: 24.375%;
 }
 </style>

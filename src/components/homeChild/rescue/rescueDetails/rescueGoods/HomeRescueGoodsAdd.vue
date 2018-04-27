@@ -3,7 +3,7 @@
 '@/components/homeChild/rescue/rescueDetails/rescueGoods/HomeRescueGoodsAdd.vue' -->
 <template>
   <div>
-    <el-select v-model="addRescueGoods.id" placeholder="请选择">
+    <el-select class="mar-bom-small" v-model="addRescueGoods.id" placeholder="请选择">
       <el-option
         v-for="item in addRescueGoodsDictionariy"
         :key="item.id"
@@ -11,12 +11,18 @@
         :value="item.id">
       </el-option>
     </el-select>
-    <input v-model="addRescueGoods.amount" placeholder="初始数量" type="text">
-    <button @click="save">保存</button>
+    <InputPack @getValue="getRescueGoods" class="mar-bom-small" placeholder="初始数量"></InputPack>
+    <ButtonPack @click.native="save">
+      保存
+    </ButtonPack>
   </div>
 </template>
 
 <script>
+// input组件
+import InputPack from '@/components/form/InputPack'
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   props: ['addRescueGoodsDictionariy'],
   data () {
@@ -27,9 +33,15 @@ export default {
       }
     }
   },
-  components: {},
+  components: {
+    InputPack,
+    ButtonPack
+  },
   computed: {},
   methods: {
+    getRescueGoods (value) {
+      this.addRescueGoods.amount = value
+    },
     save () {
       this.$http.post('/home/addRescueGoods', {goodsInfo: this.addRescueGoods, rescueId: this.$route.params.id})
       .then(res => {

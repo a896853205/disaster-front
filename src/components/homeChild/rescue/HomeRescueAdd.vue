@@ -3,15 +3,21 @@
 '@/components/homeChild/rescue/HomeRescueAdd.vue' -->
 <template>
   <div class="add-container">
-    <input v-model="rescue.name" placeholder="物资点名" type="text">
-    <input v-model="rescue.longitude" placeholder="经度" type="text">
-    <input v-model="rescue.latitude" placeholder="纬度" type="text">
-    <input v-model="rescue.open" placeholder="是否可用" type="text">
-    <button type="button" @click="save">保存</button>
+    <InputPack @getValue="getName" class="mar-bom-small" placeholder="物资点名" type="text"></InputPack>
+    <InputPack @getValue="getLatitude" class="mar-bom-small" placeholder="经度" type="text"></InputPack>
+    <InputPack @getValue="getLongitude" class="mar-bom-small" placeholder="纬度" type="text"></InputPack>
+    <InputPack @getValue="getOpen" class="mar-bom-small" placeholder="是否可用" type="text"></InputPack>
+    <ButtonPack @click.native="save">
+      保存
+    </ButtonPack>
   </div>
 </template>
 
 <script>
+// input组件
+import InputPack from '@/components/form/InputPack'
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   data () {
     return {
@@ -23,9 +29,24 @@ export default {
       }
     }
   },
-  components: {},
+  components: {
+    InputPack,
+    ButtonPack
+  },
   computed: {},
   methods: {
+    getName (value) {
+      this.rescue.name = value
+    },
+     getLatitude (value) {
+      this.rescue.latitude = value
+    },
+    getLongitude (value) {
+      this.rescue.longitude = value
+    },
+    getOpen (value) {
+      this.rescue.open = value
+    },
     save () {
       this.$http.post('/home/addRescue', this.rescue)
       .then(res => {

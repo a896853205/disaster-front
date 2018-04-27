@@ -3,7 +3,7 @@
 '@/components/homeChild/goods/HomeGoods.vue' -->
 <template>
   <FlowContainer>
-    <FlowColumn col="8">
+    <FlowColumn col="4">
       <FlowItem>
         <FlowItemHead>物品字典</FlowItemHead>
         <el-table
@@ -23,15 +23,18 @@
           </el-table-column>
           <el-table-column
             prop="typeName"
+            show-overflow-tooltip="true"
             label="类型">
           </el-table-column>
           <el-table-column
             prop="unit"
-            label="单位">
+            label="单位"
+            width="50">
           </el-table-column>
           <el-table-column
             prop="weight"
-            label="重量">
+            label="重量"
+            width="50">
           </el-table-column>
           <el-table-column
             label="操作"
@@ -42,6 +45,12 @@
             </template>
           </el-table-column>
         </el-table>
+      </FlowItem>
+    </FlowColumn>
+    <FlowColumn col="4">
+       <FlowItem>
+        <FlowItemHead>物品重量雷达图</FlowItemHead>
+        <HomeGoodsRadar :goodsData="goods"></HomeGoodsRadar>
       </FlowItem>
     </FlowColumn>
     <FlowColumn col="4">
@@ -73,10 +82,6 @@
             <span>物资单位所用重量</span>
           </li>
         </ul>
-      </FlowItem>
-      <FlowItem>
-        <FlowItemHead>物品重量雷达图</FlowItemHead>
-        <HomeGoodsRadar :goodsData="goods"></HomeGoodsRadar>
       </FlowItem>
     </FlowColumn>
     <HomeGoodsUpdate @close-dialog="closeDialog"

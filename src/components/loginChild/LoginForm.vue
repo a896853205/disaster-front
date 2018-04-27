@@ -3,8 +3,8 @@
   <div id="loginform">
     <div class="form-title">密码登录</div>
     <small class="form-describe">欢迎使用地震灾害预演系统</small>
-    <InputPack @getValue="getUser" type="text" placeholder="邮箱/会员名/8位ID" class="mar-bom-small login-input"></InputPack>
-    <InputPack @getValue="getPassWord" type="password" placeholder="登录密码" class="mar-bom-small login-input"></InputPack>
+    <InputPack @getValue="getUser" type="text" placeholder="邮箱/会员名/8位ID" class="mar-bom-small"></InputPack>
+    <InputPack @getValue="getPassWord" type="password" placeholder="登录密码" class="mar-bom-small"></InputPack>
     <ButtonPack @click.native="login">点击登录</ButtonPack>
     <div class="login-other">
       <UlPack :listClass="otherOpation.style" :linkList="otherOpation.data"></UlPack>
@@ -99,12 +99,6 @@ export default {
   display: block;
 }
 /* 登录描述结束 */
-/* 输入框样式开始 */
-.login-input {
-  background: rgb(206, 197, 190);
-  border: 1px solid rgb(27, 20 , 14);
-}
-/* 输入框样式结束 */
 /* 登录方式样式开始 */
 .login-link {
   font-size: 12px;

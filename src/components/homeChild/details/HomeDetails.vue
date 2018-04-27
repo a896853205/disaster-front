@@ -6,7 +6,9 @@
     <FlowContainer>
       <FlowColumn col="12">
         <FlowItem>
-          大图片
+          <div class="img-container">
+            <img src="../../../assets/detailTop.jpg" alt="">
+          </div>
         </FlowItem>
       </FlowColumn>
     </FlowContainer>
@@ -68,4 +70,11 @@ export default {
 }
 </script>
 <style scoped>
+.img-container {
+  height: 180px; width: 100%;
+  overflow: hidden;
+}
+img {
+  height: 180px;
+}
 </style>

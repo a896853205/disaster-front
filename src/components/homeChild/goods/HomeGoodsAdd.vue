@@ -3,16 +3,20 @@
 '@/components/homeChild/goods/HomeGoodsAdd.vue' -->
 <template>
   <div class="add-container">
-    <input v-model="goods.name" type="text" placeholder="物资名">
-    <input v-model="goods.type_id" type="text" placeholder="物资类型">
-    <input v-model="goods.size" type="text" placeholder="规格">
-    <input v-model="goods.unit" type="text" placeholder="单位">
-    <input v-model="goods.weight" type="text" placeholder="重量">
-    <button type="button" @click="save">保存</button>
+    <InputPack @getValue="getName" class="mar-bom-small" type="text" placeholder="物资名"></InputPack>
+    <InputPack @getValue="getTypeId" class="mar-bom-small" type="text" placeholder="物资类型"></InputPack>
+    <InputPack @getValue="getSize" class="mar-bom-small" type="text" placeholder="规格"></InputPack>
+    <InputPack @getValue="getUnit" class="mar-bom-small" type="text" placeholder="单位"></InputPack>
+    <InputPack @getValue="getWeight" class="mar-bom-small" type="text" placeholder="重量"></InputPack>
+    <ButtonPack @click.native="save">保存</ButtonPack>
   </div>
 </template>
 
 <script>
+// input组件
+import InputPack from '@/components/form/InputPack'
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   data () {
     return {
@@ -25,9 +29,27 @@ export default {
       }
     }
   },
-  components: {},
+  components: {
+    InputPack,
+    ButtonPack
+  },
   computed: {},
   methods: {
+    getName (value) {
+      this.goods.name = value
+    },
+    getTypeId (value) {
+      this.goods.type_id = value
+    },
+    getSize (value) {
+      this.goods.size = value
+    },
+    getUnit (value) {
+      this.goods.unit = value
+    },
+    getWeight (value) {
+      this.goods.weight = value
+    },
     save () {
       this.$http.post('/home/addGoods', this.goods)
       .then(res => {

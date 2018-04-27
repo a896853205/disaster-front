@@ -3,7 +3,7 @@
 '@/components/homeChild/rescue/rescueGoods/rescueVehicle/HomeRescueVehicleAdd.vue' -->
 <template>
   <div>
-    <el-select v-model="addRescueVehicle.id" placeholder="请选择">
+    <el-select v-model="addRescueVehicle.id"  class="mar-bom-small" placeholder="请选择">
       <el-option
         v-for="item in addRescueVehicleDictionariy"
         :key="item.id"
@@ -11,12 +11,16 @@
         :value="item.id">
       </el-option>
     </el-select>
-    <input v-model="addRescueVehicle.amount" placeholder="初始数量" type="text">
-    <button @click="save">保存</button>
+    <InputPack @getValue="getRescueVehicle" class="mar-bom-small" placeholder="初始数量"></InputPack>
+    <ButtonPack @click.native="save">保存</ButtonPack>
   </div>
 </template>
 
 <script>
+// input组件
+import InputPack from '@/components/form/InputPack'
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   props: ['addRescueVehicleDictionariy'],
   data () {
@@ -27,9 +31,15 @@ export default {
       }
     }
   },
-  components: {},
+  components: {
+    InputPack,
+    ButtonPack
+  },
   computed: {},
   methods: {
+    getRescueVehicle (value) {
+      this.addRescueVehicle.amount = value
+    },
     save () {
       this.$http.post('/home/addRescueVehicle', {vehicleInfo: this.addRescueVehicle, rescueId: this.$route.params.id})
       .then(res => {

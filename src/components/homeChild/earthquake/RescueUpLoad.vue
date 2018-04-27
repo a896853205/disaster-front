@@ -19,7 +19,8 @@
           <el-table-column
             prop="vehicle_id"
             label="交通类型id"
-            show-overflow-tooltip="true">
+            show-overflow-tooltip="true"
+            sortable>
           </el-table-column>
           <el-table-column
             prop="vehicle_name"
@@ -80,7 +81,11 @@ export default {
      * 装载具体表
      */
     upLoadArr () {
-      return this.$store.state.Earthquake.upLoadArr
+      let unSortupLoadArr = this.$store.state.Earthquake.upLoadArr
+      unSortupLoadArr.sort((one, two) => {
+        return one.vehicle_id.reverse() - two.vehicle_id.reverse()
+      })
+      return unSortupLoadArr
     }
   },
   methods: {
