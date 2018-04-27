@@ -5,25 +5,29 @@
 <template>
   <el-dialog title="修改营救点" :visible.sync="isUpdate" :show-close="false">
     <input type="text" v-model="updateRescue.id" class="hidden">
-    <input type="text" placeholder="营救点名" v-model="updateRescue.name">
-    <input type="text" placeholder="经度" v-model="updateRescue.longitude">
-    <input type="text" placeholder="纬度" v-model="updateRescue.latitude">
-    <input type="text" placeholder="是否开启" v-model="updateRescue.switch">
+    <input class="input-pack mar-bom-small" type="text" placeholder="营救点名" v-model="updateRescue.name">
+    <input class="input-pack mar-bom-small" type="text" placeholder="经度" v-model="updateRescue.longitude">
+    <input class="input-pack mar-bom-small" type="text" placeholder="纬度" v-model="updateRescue.latitude">
+    <input class="input-pack mar-bom-small" type="text" placeholder="是否开启" v-model="updateRescue.switch">
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog">取 消</el-button>
-      <el-button type="primary" @click="save">确 定</el-button>
+      <ButtonPack  class="mar-bom-small" @click.native="closeDialog">取 消</ButtonPack>
+      <ButtonPack @click.native="save">确 定</ButtonPack>
     </div>
   </el-dialog>
 </template>
 
 <script>
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   props: ['updateRescue', 'isUpdate'],
   data () {
     return {
     }
   },
-  components: {},
+  components: {
+    ButtonPack
+  },
   computed: {},
   methods: {
     save () {

@@ -38,7 +38,7 @@ export default {
     getName (value) {
       this.rescue.name = value
     },
-     getLatitude (value) {
+    getLatitude (value) {
       this.rescue.latitude = value
     },
     getLongitude (value) {

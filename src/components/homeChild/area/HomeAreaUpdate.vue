@@ -5,26 +5,30 @@
 <template>
   <el-dialog title="修改地区" :visible.sync="isUpdate" :show-close="false">
     <input type="text" v-model="updateArea.id" class="hidden">
-    <input type="text" placeholder="地区名" v-model="updateArea.name">
-    <input type="text" placeholder="人口总数" v-model="updateArea.population">
-    <input type="text" placeholder="人口密度" v-model="updateArea.density">
-    <input type="text" placeholder="经度" v-model="updateArea.latitude">
-    <input type="text" placeholder="纬度" v-model="updateArea.longitude">
+    <input class="input-pack mar-bom-small" type="text" placeholder="地区名" v-model="updateArea.name">
+    <input class="input-pack mar-bom-small" type="text" placeholder="人口总数" v-model="updateArea.population">
+    <input class="input-pack mar-bom-small" type="text" placeholder="人口密度" v-model="updateArea.density">
+    <input class="input-pack mar-bom-small" type="text" placeholder="经度" v-model="updateArea.latitude">
+    <input class="input-pack mar-bom-small" type="text" placeholder="纬度" v-model="updateArea.longitude">
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog">取 消</el-button>
-      <el-button type="primary" @click="save">确 定</el-button>
+      <ButtonPack class="mar-bom-small" @click.native="closeDialog">取 消</ButtonPack>
+      <ButtonPack @click.native="save">确 定</ButtonPack>
     </div>
   </el-dialog>
 </template>
 
 <script>
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   props: ['updateArea', 'isUpdate'],
   data () {
     return {
     }
   },
-  components: {},
+  components: {
+    ButtonPack
+  },
   computed: {},
   methods: {
     save () {

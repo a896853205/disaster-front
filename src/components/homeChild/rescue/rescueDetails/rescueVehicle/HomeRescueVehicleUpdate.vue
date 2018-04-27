@@ -5,22 +5,26 @@
 <template>
   <el-dialog title="修改营救点交通工具" :visible.sync="isVehicleUpdate" :show-close="false">
     <input type="text" v-model="updateRescueVehicle.id" class="hidden">
-    <input v-model="updateRescueVehicle.amount" placeholder="数量">
+    <input class="input-pack mar-bom-small" v-model="updateRescueVehicle.amount" placeholder="数量">
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog">取 消</el-button>
-      <el-button type="primary" @click="save">确 定</el-button>
+      <ButtonPack class="mar-bom-small" @click.native="closeDialog">取 消</ButtonPack>
+      <ButtonPack @click.native="save">确 定</ButtonPack>
     </div>
   </el-dialog>
 </template>
 
 <script>
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   props: ['updateRescueVehicle', 'isVehicleUpdate'],
   data () {
     return {
     }
   },
-  components: {},
+  components: {
+    ButtonPack
+  },
   computed: {},
   methods: {
     save () {

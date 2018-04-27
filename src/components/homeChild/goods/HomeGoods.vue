@@ -23,7 +23,7 @@
           </el-table-column>
           <el-table-column
             prop="typeName"
-            show-overflow-tooltip="true"
+            :show-overflow-tooltip="true"
             label="类型">
           </el-table-column>
           <el-table-column

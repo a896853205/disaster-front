@@ -5,26 +5,30 @@
 <template>
   <el-dialog title="修改货物" :visible.sync="isUpdate" :show-close="false">
     <input type="text" v-model="updateGoods.id" class="hidden">
-    <input type="text" placeholder="货物名" v-model="updateGoods.name">
-    <input type="text" placeholder="类型" v-model="updateGoods.type_id">
-    <input type="text" placeholder="尺寸" v-model="updateGoods.size">
-    <input type="text" placeholder="单位" v-model="updateGoods.unit">
-    <input type="text" placeholder="重量" v-model="updateGoods.weight">
+    <input class="input-pack mar-bom-small" type="text" placeholder="货物名" v-model="updateGoods.name">
+    <input class="input-pack mar-bom-small" type="text" placeholder="类型" v-model="updateGoods.type_id">
+    <input class="input-pack mar-bom-small" type="text" placeholder="尺寸" v-model="updateGoods.size">
+    <input class="input-pack mar-bom-small" type="text" placeholder="单位" v-model="updateGoods.unit">
+    <input class="input-pack mar-bom-small" type="text" placeholder="重量" v-model="updateGoods.weight">
     <div slot="footer" class="dialog-footer">
-      <el-button @click="closeDialog">取 消</el-button>
-      <el-button type="primary" @click="save">确 定</el-button>
+      <ButtonPack class="mar-bom-small" @click.native="closeDialog">取 消</ButtonPack>
+      <ButtonPack type="primary" @click.native="save">确 定</ButtonPack>
     </div>
   </el-dialog>
 </template>
 
 <script>
+// button组件
+import ButtonPack from '@/components/form/ButtonPack'
 export default {
   props: ['updateGoods', 'isUpdate'],
   data () {
     return {
     }
   },
-  components: {},
+  components: {
+    ButtonPack
+  },
   computed: {},
   methods: {
     save () {

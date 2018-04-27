@@ -32,6 +32,7 @@ export default {
       })
       let areaEchart = echarts.init(this.$refs.barChart)
       areaEchart.setOption({
+        color: ['rgb(78, 101, 72)', 'rgb(182, 161, 112)'],
         tooltip: {
           trigger: 'axis',
           axisPointer: {
